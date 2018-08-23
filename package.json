@@ -1,0 +1,22 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "part of the node.js master class by pirple. Creating a simple RESTful API using only Core Node.js functions and libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test command\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anishLearnsToCode/RESTful-API-node.git"
+  },
+  "author": "anishLearnsToCode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anishLearnsToCode/RESTful-API-node/issues"
+  },
+  "homepage": "https://github.com/anishLearnsToCode/RESTful-API-node#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
