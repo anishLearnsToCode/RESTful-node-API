@@ -14,7 +14,7 @@ const server = http.createServer( (request, response) => {
     console.log(parsedURL);
 
     //Get the path from the URL
-    let URLPath = parsedURL.pathname;
+    let URLPath = parsedURL.pathname.replace(/^\/+|\/+$/g, '');
     console.log(URLPath);
 
     //Send the response to the conjugate request
