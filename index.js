@@ -16,6 +16,8 @@ const server = http.createServer( (request, response) => {
     //Get the path from the URL
     let URLPath = parsedURL.pathname.replace(/^\/+|\/+$/g, '');
 
+    //Get the Query String from the URLPath
+    let queryStringObject = parsedURL.query;
 
     //Send the response to the conjugate request
     response.end('hello world');
@@ -25,13 +27,16 @@ const server = http.createServer( (request, response) => {
     //Logging the response URL Path
     console.log('The URL path requested is : ' + URLPath );
 
+    //Logging the URL Query String
+    console.log(queryStringObject);
+
     // Logging the request headers
     console.log('The request headers sent to the server is ');
     console.log(request.headers);
 
-    // Logging teh request method
+    // Logging the request method
     console.log(request.method);
-    console.log('--------------------------');
+    console.log('---------------------------------');
 
 });
 
