@@ -18,11 +18,11 @@ const server = http.createServer( (request, response) => {
     console.log(URLPath);
 
     //Send the response to the conjugate request
-
+    response.end('hello world');
 
     //Log the response
+    console.log('The URL path requested is : ' + URLPath);
 
-    response.end('hello world \n' + request.url);
 });
 
 // The server should listen on port 3000
