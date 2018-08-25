@@ -16,7 +16,6 @@ const server = http.createServer( (request, response) => {
     //Get the path from the URL
     let URLPath = parsedURL.pathname;
     console.log(URLPath);
-    let trimmedPath = URLPath.trim();
 
     //Send the response to the conjugate request
 
