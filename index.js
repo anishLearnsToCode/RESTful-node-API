@@ -4,6 +4,7 @@
 // Importing Modules & declaring constants
 const http = require('http');
 const url = require('url');
+const StringDecoder = require('string_decoder').StringDecoder;
 const portAddress = 3000;
 
 // The server should respond to all the requests that are sent to it with a string
@@ -19,24 +20,36 @@ const server = http.createServer( (request, response) => {
     //Get the Query String from the URLPath
     let queryStringObject = parsedURL.query;
 
-    //Send the response to the conjugate request
-    response.end('hello world');
+    //Getting the payload (if any) from the user request
+    const StringDecoder = new StringDecoder('utf-8');
+    let buffer = '';
+    request.on('data', (data) => {
+       buffer += StringDecoder.write(data);
+    });
+    request.on('end', () => {
+        buffer += StringDecoder.end();
+
+        //Send the response to the conjugate request
+        response.end('hello world');
 
 
-    //Logging the response
-    //Logging the response URL Path
-    console.log('The URL path requested is : ' + URLPath );
+        //Logging the response
+        //Logging the response URL Path
+        console.log('The URL path requested is : ' + URLPath );
 
-    //Logging the URL Query String
-    console.log(queryStringObject);
+        //Logging the URL Query String
+        console.log(queryStringObject);
 
-    // Logging the request headers
-    console.log('The request headers sent to the server is ');
-    console.log(request.headers);
+        // Logging the request headers
+        console.log('The request headers sent to the server is ');
+        console.log(request.headers);
 
-    // Logging the request method
-    console.log(request.method);
-    console.log('---------------------------------');
+        // Logging the request method
+        console.log(request.method);
+        console.log('---------------------------------');
+    });
+
+
 
 });
 
