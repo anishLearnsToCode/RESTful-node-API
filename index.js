@@ -13,7 +13,6 @@ const server = http.createServer( (request, response) => {
     //Create a URL and parse it
     let parsedURL = url.parse(request.url, true);
 
-
     //Get the path from the URL
     let URLPath = parsedURL.pathname.replace(/^\/+|\/+$/g, '');
 
@@ -21,13 +20,13 @@ const server = http.createServer( (request, response) => {
     let queryStringObject = parsedURL.query;
 
     //Getting the payload (if any) from the user request
-    const StringDecoder = new StringDecoder('utf-8');
+    const decoder = new StringDecoder('utf-8');
     let buffer = '';
     request.on('data', (data) => {
-       buffer += StringDecoder.write(data);
+       buffer += decoder.write(data);
     });
     request.on('end', () => {
-        buffer += StringDecoder.end();
+        buffer += decoder.end();
 
         //Send the response to the conjugate request
         response.end('hello world');
@@ -41,11 +40,13 @@ const server = http.createServer( (request, response) => {
         console.log(queryStringObject);
 
         // Logging the request headers
-        console.log('The request headers sent to the server is ');
-        console.log(request.headers);
+        console.log('Request Headers : ', request.headers);
+
+        // Logging the request payload
+        console.log('The request payload is: ', buffer);
 
         // Logging the request method
-        console.log(request.method);
+        console.log('Request Method : ', request.method);
         console.log('---------------------------------');
     });
 
